@@ -1,6 +1,7 @@
 from view import AntialiasingView
 from model import Antialiasing
-
+import sys
+    
 
 class Antialiasing_controller:
 
@@ -17,12 +18,22 @@ class Antialiasing_controller:
 
     def apply_method(self, antialiasing): 
         antialiasing.convert()
-    
+
+    def want_continue(self): 
+       
+        choice = self.view.ask_want_to_continue()
+
+        if(choice == "y"): 
+            self.start()
+        else:
+            sys.exit()
+
 
     def start(self):
         self.view.start_view()
         antialiasing = self.get_infos()
         self.apply_method(antialiasing)
+        self.want_continue()
 
 
 
